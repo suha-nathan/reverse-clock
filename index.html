@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reverse Clock</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <style>
+    #timerContainer {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 300;
+      width:700px;
+      margin:20px auto;
+      min-height: 60px;
+      border-top:0px;
+    }
+    .timer, .reset {
+      float:left;
+      width: 54%;
+      padding: 20px 0;
+      font-size: 24px;
+      text-align:center;
+      color: #fff;
+      background: #A90000;
+      cursor: pointer
+    }
+    .reset {
+      background: #550000;
+      color: white;
+      width:14.9%;
+      border-left: 1px solid #990000;
+    }
+    .reset:hover {
+      background: #CC0000;
+    }
+    .lighter {
+      background: #CC0000
+    }
+    .clock-time, .clock, .format, .decrement {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    h3{
+      padding-right: 2rem;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- <div class="format"> <h2>Format - hours:minutes:seconds</h2>  </div> -->
+  <div id="timerContainer">
+    <div class="timer" onclick="startTimer()">Time</div>
+    <!-- <div class="startTimer reset" onclick="startTimer()" >
+      <i class="fas fa-play">play</i>
+    </div> -->
+    <!-- <div class="pauseTimer reset" onclick="pauseTimer()" >
+      <i class="fas fa-pause">pause</i>
+    </div> -->
+    <div class="resetTimer reset" onclick="resetTimer()">Reset</div>
+  </div>
+  <div class="decrement"> 
+    <h3>Go back in time (s): </h3>
+    <input type="number" name="decrementValue" value = "0" min="0" max="100" id="decrementValue">  
+    <button type="button" class="startTimer" onclick="startTimer()">reverso!</button>
+  </div>
+
+  <div class="clock-time"></div>
+  <div class= "clock"> 
+    <canvas id="canvas" width="400" height="400"
+      style="background-color:#333">
+    </canvas>
+  </div>
+  
+
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
