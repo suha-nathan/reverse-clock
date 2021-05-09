@@ -4,8 +4,6 @@ let pauseTimerButton = document.querySelector('.pauseTimer');
 let startTime = new Date().getTime();
 let updatedTime;
 let difference;
-let tInterval;
-let savedTime;
 let reverseAmount = document.getElementById("decrementValue").value
 
 let canvas = document.getElementById("canvas");
@@ -39,7 +37,7 @@ function resetTimer(){
   // clearInterval(tInterval);
   document.getElementById("decrementValue").value = 0
   reverseAmount = document.getElementById("decrementValue").value
-  
+
   difference = 0;
   startTime = new Date().getTime();
   // timerDisplay.innerHTML = 'Start Timer!';
