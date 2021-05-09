@@ -1,12 +1,12 @@
 let startTimerButton = document.querySelector('.startTimer');
 let pauseTimerButton = document.querySelector('.pauseTimer');
-let timerDisplay = document.querySelector('.timer');
+// let timerDisplay = document.querySelector('.timer');
 let startTime = new Date().getTime();
 let updatedTime;
 let difference;
 let tInterval;
 let savedTime;
-let reverseAmount=document.getElementById("decrementValue").value
+let reverseAmount = document.getElementById("decrementValue").value
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
@@ -15,7 +15,6 @@ ctx.translate(radius, radius);
 radius = radius * 0.90
 
 window.onload = (event) => {
-  console.log('page is fully loaded');
   setInterval(drawClock, 1000);
 };
 
@@ -28,9 +27,9 @@ function startTimer(){
 
   paused = 0;
   running = 1;
-  timerDisplay.style.background = "#FF0000";
-  timerDisplay.style.cursor = "auto";
-  timerDisplay.style.color = "yellow";
+  // timerDisplay.style.background = "#FF0000";
+  // timerDisplay.style.cursor = "auto";
+  // timerDisplay.style.color = "yellow";
   startTimerButton.disabled = true;
   startTimerButton.style.cursor = "auto";
 
@@ -38,41 +37,45 @@ function startTimer(){
 
 function resetTimer(){
   // clearInterval(tInterval);
+  document.getElementById("decrementValue").value = 0
+  reverseAmount = document.getElementById("decrementValue").value
+  
   difference = 0;
-  timerDisplay.innerHTML = 'Start Timer!';
-  timerDisplay.style.background = "#A90000";
-  timerDisplay.style.color = "#fff";
-  timerDisplay.style.cursor = "pointer";
-  startTimerButton.classList.remove('lighter');
+  startTime = new Date().getTime();
+  // timerDisplay.innerHTML = 'Start Timer!';
+  // timerDisplay.style.background = "#A90000";
+  // timerDisplay.style.color = "#fff";
+  // timerDisplay.style.cursor = "pointer";
+  // startTimerButton.classList.remove('lighter');
   startTimerButton.disabled = false;
   startTimerButton.style.cursor = "pointer";
 
 }
 
-function getShowTime(){
-    console.log(reverseAmount)
-    updatedTime = new Date().getTime();
-    if (savedTime){
-        difference = ((updatedTime - startTime) + savedTime) * reverseAmount;
-    } else {
-        difference =  (updatedTime - startTime) * (reverseAmount);
-    }
-    // console.log("difference: ", difference)
-    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((difference % (1000 * 60)) / 1000);
-    //   let milliseconds = Math.floor((difference % (1000 * 60)) / 100);
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
-    //   milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
+// function getShowTime(){
+//     console.log(reverseAmount)
+//     updatedTime = new Date().getTime();
+//     if (savedTime){
+//         difference = ((updatedTime - startTime) + savedTime) * reverseAmount;
+//     } else {
+//         difference =  (updatedTime - startTime) * (reverseAmount);
+//     }
+//     // console.log("difference: ", difference)
+//     let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+//     let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//     let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+//     let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+//     //   let milliseconds = Math.floor((difference % (1000 * 60)) / 100);
+//     hours = (hours < 10) ? "0" + hours : hours;
+//     minutes = (minutes < 10) ? "0" + minutes : minutes;
+//     seconds = (seconds < 10) ? "0" + seconds : seconds;
+//     //   milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
 
-    if(reverseAmount >= 0 ){
-        timerDisplay.innerHTML ="-" + hours + 'hrs ' + minutes + 'min ' + seconds +"sec" ;//+ ':' + milliseconds;
-    }
+//     if(reverseAmount >= 0 ){
+//         timerDisplay.innerHTML ="-" + hours + 'hrs ' + minutes + 'min ' + seconds +"sec" ;//+ ':' + milliseconds;
+//     }
     
-}
+// }
 
 function drawClock() {
   drawFace(ctx, radius);

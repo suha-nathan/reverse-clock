@@ -18,7 +18,7 @@
     }
     .timer, .reset {
       float:left;
-      width: 54%;
+      width: 70%;
       padding: 20px 0;
       font-size: 24px;
       text-align:center;
@@ -27,13 +27,13 @@
       cursor: pointer
     }
     .reset {
-      background: #550000;
+      background: #c20505;
       color: white;
-      width:14.9%;
+      /* width:14.9%; */
       border-left: 1px solid #990000;
     }
     .reset:hover {
-      background: #CC0000;
+      background: #550000;
     }
     .lighter {
       background: #CC0000
@@ -52,14 +52,14 @@
 <body>
   <!-- <div class="format"> <h2>Format - hours:minutes:seconds</h2>  </div> -->
   <div id="timerContainer">
-    <div class="timer" onclick="startTimer()">Time</div>
+    <!-- <div class="timer" onclick="startTimer()">Time</div> -->
     <!-- <div class="startTimer reset" onclick="startTimer()" >
       <i class="fas fa-play">play</i>
     </div> -->
     <!-- <div class="pauseTimer reset" onclick="pauseTimer()" >
       <i class="fas fa-pause">pause</i>
     </div> -->
-    <div class="resetTimer reset" onclick="resetTimer()">Reset</div>
+    <div class="resetTimer reset" onclick="resetTimer()">Reset Clock to Forward Time</div>
   </div>
   <div class="decrement"> 
     <h3>Go back in time (s): </h3>
