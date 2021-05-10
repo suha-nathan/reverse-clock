@@ -1,15 +1,8 @@
-// import { fireEvent, getByText } from '@testing-library/dom'
-const fireEvent = require('@testing-library/dom').fireEvent
-const getByText = require('@testing-library/dom').getByText
-const getByRole = require('@testing-library/dom').getByRole
-require("@testing-library/jest-dom/extend-expect")
+const {fireEvent, getByText, getByRole, getByTestId, getByLabelText, waitFor } = require('@testing-library/dom')
+require('@testing-library/jest-dom/extend-expect')
 const JSDOM = require("jsdom").JSDOM
 const fs = require("fs")
 const path = require("path")
-// import '@testing-library/jest-dom/extend-expect'
-// import { JSDOM } from 'jsdom'
-// import fs from 'fs'
-// import path from 'path'
 
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 
@@ -26,6 +19,16 @@ describe('index.html', () => {
     container = dom.window.document.body
   })
 
+//   it('can load a script', () => {
+//     const handler = jest.fn();
+//     render(<script src="./index.js" />);
+//     const script = document.querySelector('script');
+//     script.onload = handler;
+//     expect(handler).not.toHaveBeenCalled();
+//     fireEvent.load(script);
+//     expect(handler).toHaveBeenCalled();
+// });
+
   it('renders the timer container', () => {
     expect(container.querySelector('#timerContainer')).not.toBeNull()
     expect(getByText(container, 'Go back in time (s):')).toBeInTheDocument()
@@ -38,19 +41,33 @@ describe('index.html', () => {
     expect(getByText(container, 'Reverse Time')).toBeInTheDocument()
   })
 
-  it('renders a new paragraph via JavaScript when the button is clicked', async () => {
+  it('renders correct input value and clock time on load', async () => {
     const button = getByRole(container, 'button')
-    const input = getByLabel
-    fireEvent.click(button)
-    let generatedParagraphs = container.querySelectorAll('#pun-container p')
-    expect(generatedParagraphs.length).toBe(1)
+    const input = getByLabelText(container, 'Go back in time (s):', {selector: 'input'})
+    expect(input.value).toBe('0')
+    // const clockDiv = container.querySelector('.clock-time')
 
+    // fireEvent.change(input, { target: { value: '0' } })
     // fireEvent.click(button)
-    // generatedParagraphs = container.querySelectorAll('#pun-container p')
-    // expect(generatedParagraphs.length).toBe(2)
 
-    // fireEvent.click(button)
-    // generatedParagraphs = container.querySelectorAll('#pun-container p')
-    // expect(generatedParagraphs.length).toBe(3)
+    const clockDiv = getByTestId(container,"clock-time").textContent
+    const currentTime = new Date()
+    const clockTime = "Current Time: "+ currentTime.getHours() +" hour " + currentTime.getMinutes() + " minutes " + currentTime.getSeconds() + " seconds." 
+
+    expect(clockDiv).toBe(clockTime)
   })
+
+  it('renders correct clock value on user input of 2 seconds', async () => {
+    const button = getByRole(container, 'button')
+    const input = getByLabelText(container, 'Go back in time (s):', {selector: 'input'})
+    fireEvent.change(input, { target: { value: '2' } })
+    fireEvent.click(button)
+
+    const clockDiv = getByTestId(container,"clock-time").textContent
+    expect(clockDiv).not.toBeNull()
+    // const reversedTime 
+    // const clockTime = "Current Time: "+ reversedTime.getHours() +" hour " + reversedTime.getMinutes() + " minutes " + reversedTime.getSeconds() + " seconds." 
+    // expect(clockDiv).toBe(clockTime)
+  })
+
 })

@@ -137,9 +137,9 @@ function drawTime(ctx, radius){
   let reverseSeconds = reverseTime.getSeconds()
   
   document.querySelector(".clock-time").innerHTML ="Current Time: "+ reverseHours +" hour " + reverseMinutes + " minutes " + reverseSeconds + " seconds." 
-  console.log("seconds: ",reverseSeconds)
-  console.log("minutes: ",reverseMinutes)
-  console.log("hours: ", reverseHours)
+  // console.log("seconds: ",reverseSeconds)
+  // console.log("minutes: ",reverseMinutes)
+  // console.log("hours: ", reverseHours)
 
   //hour
   reverseHours=reverseHours%12;
