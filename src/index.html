@@ -2,14 +2,14 @@
 <html>
 <head>
   <title>Reverse Clock</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i"> -->
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"> -->
   <style>
     #timerContainer {
       display:flex;
       justify-content:center;
       align-items:center;
-      font-family: 'Source Sans Pro', sans-serif;
+      /* font-family: 'Source Sans Pro', sans-serif; */
       font-weight: 300;
       width:700px;
       margin:20px auto;
@@ -60,9 +60,9 @@
     <div class="resetTimer reset" onclick="resetTimer()">Reset Clock to Forward Time</div>
   </div>
   <div class="decrement"> 
-    <h3>Go back in time (s): </h3>
+    <label for="decrementValue">Go back in time (s): </label>
     <input type="number" name="decrementValue" value = "0" min="0" max="100" id="decrementValue">  
-    <button type="button" class="startTimer" onclick="startTimer()">reverso!</button>
+    <button type="button" class="startTimer" onclick="startTimer()">Reverse Time</button>
   </div>
 
   <div class="clock-time"></div>
